@@ -1,2 +1,16 @@
 parameters:
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$min \\(0\\) of function random_int expects lower number than parameter \\#2 \\$max \\(int\\<\\-1, max\\>\\)\\.$#"
+			count: 1
+			path: src/Crypto.php
+
+		-
+			message: "#^Parameter \\#2 \\$flags of static method chillerlan\\\\Utilities\\\\Str\\:\\:jsonEncode\\(\\) expects int, int\\|null given\\.$#"
+			count: 1
+			path: src/File.php
+
+		-
+			message: "#^Parameter \\$length of function file_get_contents expects int\\<0, max\\>\\|null, int\\|null given\\.$#"
+			count: 1
+			path: src/File.php

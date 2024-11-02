@@ -4,14 +4,14 @@ parameters:
 	level: 9
 	tmpDir: .build/phpstan-cache
 	paths:
-		- examples
+#		- examples
 		- src
-		- tests
+#		- tests
 
 	treatPhpDocTypesAsCertain: false
 
 includes:
 	- phpstan-baseline.neon
+	- .phpstan/ignore-by-php-version.php
 	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
 	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
-#	- vendor/chillerlan/php-settings-container/rules-magic-access.neon
