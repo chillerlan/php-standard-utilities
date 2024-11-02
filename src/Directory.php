@@ -22,13 +22,10 @@ use function mkdir;
 use function realpath;
 use function rmdir;
 use function sprintf;
-use function str_contains;
 use function trim;
-use function unlink;
-use const DIRECTORY_SEPARATOR;
 
 /**
- *
+ * Basic directory utilities
  */
 final class Directory{
 

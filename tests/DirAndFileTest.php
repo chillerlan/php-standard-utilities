@@ -20,7 +20,6 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use function realpath;
-use function var_dump;
 use const DIRECTORY_SEPARATOR;
 
 #[CoversClass(Directory::class)]

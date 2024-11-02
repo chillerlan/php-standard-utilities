@@ -28,7 +28,7 @@ use const PHP_VERSION_ID;
 use const SODIUM_CRYPTO_SECRETBOX_NONCEBYTES;
 
 /**
- *
+ * Basic cryptographic utilities
  */
 final class Crypto{
 
