@@ -21,7 +21,7 @@ on:
 name: "Continuous Integration"
 
 env:
-  PHP_EXTENSIONS: "" # caution: setting 'none' resets/disables shared extensions
+  PHP_EXTENSIONS: json, mbstring, sodium
   PHP_INI_VALUES: memory_limit=-1, error_reporting=-1, display_errors=On
 
 jobs:
