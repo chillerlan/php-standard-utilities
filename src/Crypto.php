@@ -66,8 +66,6 @@ final class Crypto{
 	/**
 	 * Generates a secure random string of the given $length, using the characters (8-bit byte) in the given $keyspace.
 	 *
-	 * @throws \Random\RandomException
-	 *
 	 * @noinspection PhpFullyQualifiedNameUsageInspection
 	 * @SuppressWarnings(PHPMD.MissingImport)
 	 */
@@ -105,7 +103,7 @@ final class Crypto{
 	 * @see \sodium_bin2base64()
 	 * @see \sodium_bin2hex()
 	 *
-	 * @throws \SodiumException|\Random\RandomException
+	 * @throws \SodiumException
 	 */
 	public static function encrypt(string $data, string $keyHex, int $format = self::ENCRYPT_FORMAT_HEX):string{
 		$nonce = random_bytes(SODIUM_CRYPTO_SECRETBOX_NONCEBYTES);
