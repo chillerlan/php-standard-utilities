@@ -105,8 +105,8 @@ final class File{
 	 *
 	 * @codeCoverageIgnore
 	 */
-	public static function loadJSON(string $file, bool $associative = false):mixed{
-		return Str::jsonDecode(self::load($file), $associative);
+	public static function loadJSON(string $file, bool $associative = false, int $flags = 0):mixed{
+		return Str::jsonDecode(self::load($file), $associative, $flags);
 	}
 
 	/**
@@ -114,7 +114,7 @@ final class File{
 	 *
 	 * @codeCoverageIgnore
 	 */
-	public static function saveJSON(string $file, mixed $data, int|null $flags = null):int{
+	public static function saveJSON(string $file, mixed $data, int $flags = Str::JSON_ENCODE_FLAGS_DEFAULT):int{
 		return self::save($file, Str::jsonEncode($data, $flags));
 	}
 
