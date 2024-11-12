@@ -54,8 +54,8 @@ class DirAndFileTest extends TestCase{
 
 	#[Test]
 	public function loadInvalidFileException():void{
-		$this->expectException(RuntimeException::class);
-		$this->expectExceptionMessage('cannot read the given file');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('invalid file path');
 
 		File::load(self::invalidFile);
 	}
@@ -68,8 +68,8 @@ class DirAndFileTest extends TestCase{
 
 	#[Test]
 	public function deleteInvalidFileException():void{
-		$this->expectException(RuntimeException::class);
-		$this->expectExceptionMessage('cannot read the given file');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('invalid file path');
 
 		File::delete(self::invalidFile);
 	}

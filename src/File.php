@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace chillerlan\Utilities;
 
+use InvalidArgumentException;
 use RuntimeException;
 use function clearstatcache;
 use function dirname;
@@ -55,11 +56,29 @@ final class File{
 		return self::exists($file) && is_writable($file);
 	}
 
-	public static function delete(string $file):bool{
-		$file = realpath($file);
+	/**
+	 * Returns the absolute real path to the given file or directory
+	 *
+	 * @codeCoverageIgnore
+	 */
+	public static function realpath(string $path):string{
+		$realpath = realpath($path);
 
-		if($file === false || !self::isWritable($file)){
-			throw new RuntimeException('cannot read the given file');
+		if($realpath === false){
+			throw new InvalidArgumentException('invalid file path');
+		}
+
+		return $realpath;
+	}
+
+	/**
+	 * Deletes a file
+	 */
+	public static function delete(string $file):bool{
+		$file = self::realpath($file);
+
+		if(!self::isWritable($file)){
+			throw new RuntimeException('cannot read the given file'); // @codeCoverageIgnore
 		}
 
 		if(!unlink($file)){
@@ -79,10 +98,10 @@ final class File{
 	 * @throws \RuntimeException
 	 */
 	public static function load(string $file, int $offset = 0, int|null $length = null):string{
-		$file = realpath($file);
+		$file = self::realpath($file);
 
-		if($file === false || !self::isReadable($file)){
-			throw new RuntimeException('cannot read the given file');
+		if(!self::isReadable($file)){
+			throw new RuntimeException('cannot read the given file'); // @codeCoverageIgnore
 		}
 
 		$content = file_get_contents(filename: $file, offset: $offset, length: $length);

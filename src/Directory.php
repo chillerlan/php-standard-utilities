@@ -19,7 +19,6 @@ use function is_dir;
 use function is_readable;
 use function is_writable;
 use function mkdir;
-use function realpath;
 use function rmdir;
 use function sprintf;
 use function trim;
@@ -78,16 +77,9 @@ final class Directory{
 			throw new RuntimeException(sprintf('could not create directory: %s', $dir)); // @codeCoverageIgnore
 		}
 
-		$dir = realpath($dir);
-
-		// reaplpath error
-		if(!$dir){
-			throw new RuntimeException('invalid directory (realpath)'); // @codeCoverageIgnore
-		}
-
 		clearstatcache();
 
-		return $dir;
+		return File::realpath($dir);
 	}
 
 	/**
