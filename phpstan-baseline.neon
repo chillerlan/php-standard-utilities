@@ -9,3 +9,18 @@ parameters:
 			message: "#^Parameter \\$length of function file_get_contents expects int\\<0, max\\>\\|null, int\\|null given\\.$#"
 			count: 1
 			path: src/File.php
+
+		-
+			message: "#^Method chillerlan\\\\UtilitiesTest\\\\StrTest\\:\\:containsAllProvider\\(\\) should return array\\<string, array\\{array\\<int, string\\>, bool, bool\\}\\> but returns array\\{empty\\: array\\{array\\{\\}, false, true\\}, filtered\\: array\\{array\\{1, array\\{\\}, true\\}, false, true\\}, default\\: array\\{array\\{'world', 'Hello'\\}, false, true\\}, case mismatch\\: array\\{array\\{'World', 'hello'\\}, false, false\\}, ignore case\\: array\\{array\\{'World', 'hello'\\}, true, true\\}\\}\\.$#"
+			count: 1
+			path: tests/StrTest.php
+
+		-
+			message: "#^Method chillerlan\\\\UtilitiesTest\\\\StrTest\\:\\:containsAnyProvider\\(\\) should return array\\<string, array\\{array\\<int, string\\>, bool, bool\\}\\> but returns array\\{empty\\: array\\{array\\{\\}, false, true\\}, filtered\\: array\\{array\\{1, array\\{\\}, true\\}, false, true\\}, default\\: array\\{array\\{'nope', 'Hello'\\}, false, true\\}, case mismatch\\: array\\{array\\{'nope', 'hello'\\}, false, false\\}, ignore case\\: array\\{array\\{'nope', 'hello'\\}, true, true\\}\\}\\.$#"
+			count: 1
+			path: tests/StrTest.php
+
+		-
+			message: "#^Method chillerlan\\\\UtilitiesTest\\\\StrTest\\:\\:startsWithProvider\\(\\) should return array\\<string, array\\{array\\<int, string\\>, bool, bool\\}\\> but returns array\\{empty\\: array\\{array\\{\\}, false, true\\}, filtered\\: array\\{array\\{1, array\\{\\}, true\\}, false, true\\}, default\\: array\\{array\\{'nope', 'Hello'\\}, false, true\\}, case mismatch\\: array\\{array\\{'nope', 'hello'\\}, false, false\\}, ignore case\\: array\\{array\\{'nope', 'hello'\\}, true, true\\}\\}\\.$#"
+			count: 1
+			path: tests/StrTest.php
