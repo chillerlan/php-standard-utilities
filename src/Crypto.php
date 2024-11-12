@@ -64,7 +64,10 @@ final class Crypto{
 	}
 
 	/**
-	 * Generates a secure random string of the given $length, using the characters (8-bit byte) in the given $keyspace.
+	 * Generates a secure random string of the given `$length`, using the characters (8-bit byte) in the given `$keyspace`.
+	 *
+	 * @see \random_int() - PHP <= 8.2
+	 * @see \Random\Randomizer - PHP >= 8.3
 	 *
 	 * @noinspection PhpFullyQualifiedNameUsageInspection
 	 * @SuppressWarnings(PHPMD.MissingImport)
@@ -88,7 +91,10 @@ final class Crypto{
 	}
 
 	/**
-	 * Creates a new cryptographically secure random encryption key (returned in hexadecimal format)
+	 * Creates a new cryptographically secure random encryption key for use with `encrypt()` and `decrypt()` (returned in hexadecimal format)
+	 *
+	 * @see \sodium_crypto_secretbox_keygen()
+	 * @see \sodium_crypto_secretbox())
 	 *
 	 * @throws \SodiumException
 	 */
@@ -97,7 +103,7 @@ final class Crypto{
 	}
 
 	/**
-	 * Encrypts the given $data with $key, $format output [binary, base64, hex]
+	 * Encrypts the given `$data` with `$key`, formats the output according to `$format` [binary, base64, hex]
 	 *
 	 * @see \sodium_crypto_secretbox()
 	 * @see \sodium_bin2base64()
@@ -125,7 +131,7 @@ final class Crypto{
 	}
 
 	/**
-	 * Decrypts the given $encrypted data with $key from $format input [binary, base64, hex]
+	 * Decrypts the given `$encrypted` data with `$key` from input formatted according to `$format` [binary, base64, hex]
 	 *
 	 * @see \sodium_crypto_secretbox_open()
 	 * @see \sodium_base642bin()

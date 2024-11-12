@@ -33,6 +33,9 @@ class StrTest extends TestCase{
 		];
 	}
 
+	/**
+	 * @param string[] $needles
+	 */
 	#[Test]
 	#[DataProvider('startsWithProvider')]
 	public function startsWith(array $needles, bool $ignoreCase, bool $expected):void{
@@ -52,6 +55,9 @@ class StrTest extends TestCase{
 		];
 	}
 
+	/**
+	 * @param string[] $needles
+	 */
 	#[Test]
 	#[DataProvider('containsAllProvider')]
 	public function containsAll(array $needles, bool $ignoreCase, bool $expected):void{
@@ -71,11 +77,13 @@ class StrTest extends TestCase{
 		];
 	}
 
+	/**
+	 * @param string[] $needles
+	 */
 	#[Test]
 	#[DataProvider('containsAnyProvider')]
 	public function containsAny(array $needles, bool $ignoreCase, bool $expected):void{
 		$this::assertSame(Str::containsAny('Hello world!', $needles, $ignoreCase), $expected);
 	}
-
 
 }

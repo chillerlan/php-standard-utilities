@@ -39,7 +39,6 @@ final class Str{
 	/**
 	 * Filters an array and removes all elements that are not strings. Array keys are *not* retained.
 	 *
-	 *
 	 * @see array_filter()
 	 * @see array_values()
 	 * @see is_string()

@@ -29,17 +29,29 @@ use function trim;
  */
 final class Directory{
 
-	/** @codeCoverageIgnore */
+	/**
+	 * Checks whether a directory exists
+	 *
+	 * @codeCoverageIgnore
+	 */
 	public static function exists(string $dir):bool{
 		return file_exists($dir) && is_dir($dir);
 	}
 
-	/** @codeCoverageIgnore */
+	/**
+	 * Checks whether the given directory is readable
+	 *
+	 * @codeCoverageIgnore
+	 */
 	public static function isReadable(string $dir):bool{
 		return self::exists($dir) && is_readable($dir);
 	}
 
-	/** @codeCoverageIgnore */
+	/**
+	 * Checks whether the given directory is writable
+	 *
+	 * @codeCoverageIgnore
+	 */
 	public static function isWritable(string $dir):bool{
 		return self::exists($dir) && is_writable($dir);
 	}

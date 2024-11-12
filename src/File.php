@@ -28,17 +28,29 @@ use function unlink;
  */
 final class File{
 
-	/** @codeCoverageIgnore */
+	/**
+	 * Checks whether a file exists
+	 *
+	 * @codeCoverageIgnore
+	 */
 	public static function exists(string $file):bool{
 		return file_exists($file) && is_file($file);
 	}
 
-	/** @codeCoverageIgnore */
+	/**
+	 * Checks whether the given file is readable
+	 *
+	 * @codeCoverageIgnore
+	 */
 	public static function isReadable(string $file):bool{
 		return self::exists($file) && is_readable($file);
 	}
 
-	/** @codeCoverageIgnore */
+	/**
+	 * Checks whether the given file is writable
+	 *
+	 * @codeCoverageIgnore
+	 */
 	public static function isWritable(string $file):bool{
 		return self::exists($file) && is_writable($file);
 	}
