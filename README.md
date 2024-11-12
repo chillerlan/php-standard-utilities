@@ -64,11 +64,11 @@ pre-defined character maps for use with `Crypto::randomString()` as  `$keyspace`
 - `NUMERIC`: numbers 0-9
 - `ASCII_LOWER`: ASCII a-z
 - `ASCII_UPPER`: ASCII A-Z
-- `ASCII_SYMBOL`: ASCII printable symbols
+- `ASCII_SYMBOL`: ASCII printable symbols  ``!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~``
 - `HEXADECIMAL`: numbers 0-9 + ASCII a-f
 - `ASCII_ALPHANUM`: numbers 0-9 + ASCII a-z + A-Z
 - `ASCII_PRINTABLE`: numbers 0-9 + ASCII a-z + A-Z + printable symbols
-- `ASCII_COMMON_PW`: ASCII printable minus a few troublemaker symbols
+- `ASCII_COMMON_PW`: ASCII printable minus a few troublemaker symbols `!#$%&()*+,-./:;<=>?@[]~_|`
 
 output and input `$format` for the functions `Crypto::encrypt()` and `Crypto::decrypt()`, respectively:
 
