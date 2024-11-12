@@ -34,6 +34,93 @@ This library features some common functions to reduce overall duplication and av
 - PHP 8.1+
 	- extensions: `json`, `mbstring`, `sodium`
 
+## API
+
+### `Arr`
+
+(we can't use `array` as class name because reasons)
+
+| method                           | description                                                                |
+|----------------------------------|----------------------------------------------------------------------------|
+| `Arr::first(array $array):mixed` | Returns the first element of an array, `null` if the given array is empty. |
+| `Arr::last(array $array):mixed`  | Returns the last element of an array, `null` if the given array is empty.  |
+
+
+### `Crypto`
+
+| method                                                                                                | description                                                                                                                            |
+|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `Crypto::sha256(string $data, bool $binary = false):string`                                           | Generates an SHA-256 hash for the given value                                                                                          |
+| `Crypto::sha512(string $data, bool $binary = false):string`                                           | Generates an SHA-512 hash for the given value                                                                                          |
+| `Crypto::randomString(int $length, string $keyspace = Crypto::ASCII_COMMON_PW):string`                | Generates a secure random string of the given `$length`, using the characters (8-bit byte) in the given `$keyspace`.                   |
+| `Crypto::createEncryptionKey():string`                                                                | Creates a new cryptographically secure random encryption key for use with `encrypt()` and `decrypt()` (returned in hexadecimal format) |
+| `Crypto::encrypt(string $data, string $keyHex, int $format = Crypto::ENCRYPT_FORMAT_HEX):string`      | Encrypts the given `$data` with `$key`, formats the output according to `$format` \[binary, base64, hex\]                              |
+| `Crypto::decrypt(string $encrypted, string $keyHex, int $format = Crypto::ENCRYPT_FORMAT_HEX):string` | Decrypts the given `$encrypted` data with `$key` from input formatted according to `$format` \[binary, base64, hex\]                   |
+
+The `Crypto` class defines the following public constants:
+
+pre-defined character maps for use with `Crypto::randomString()` as  `$keyspace`:
+
+- `NUMERIC`: numbers 0-9
+- `ASCII_LOWER`: ASCII a-z
+- `ASCII_UPPER`: ASCII A-Z
+- `ASCII_SYMBOL`: ASCII printable symbols
+- `HEXADECIMAL`: numbers 0-9 + ASCII a-f
+- `ASCII_ALPHANUM`: numbers 0-9 + ASCII a-z + A-Z
+- `ASCII_PRINTABLE`: numbers 0-9 + ASCII a-z + A-Z + printable symbols
+- `ASCII_COMMON_PW`: ASCII printable minus a few troublemaker symbols
+
+output and input `$format` for the functions `Crypto::encrypt()` and `Crypto::decrypt()`, respectively:
+
+- `ENCRYPT_FORMAT_BINARY`: raw binary
+- `ENCRYPT_FORMAT_BASE64`: mime base64
+- `ENCRYPT_FORMAT_HEX`: hexadecimal
+
+
+### `Directory`
+
+| method                                                                                    | description                                                   |
+|-------------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| `Directory::exists(string $dir):bool`                                                     | Checks whether a directory exists                             |
+| `Directory::isReadable(string $dir):bool`                                                 | Checks whether the given directory is readable                |
+| `Directory::isWritable(string $dir):bool`                                                 | Checks whether the given directory is writable                |
+| `Directory::create(string $dir, int $permissions = 0o777, bool $recursive = true):string` | Creates a directory                                           |
+| `Directory::remove(string $dir):bool`                                                     | Removes a directory                                           |
+
+
+### `File`
+
+| method                                                                                       | description                                                        |
+|----------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| `File::exists(string $file):bool`                                                            | Checks whether a file exists                                       |
+| `File::isReadable(string $file):bool`                                                        | Checks whether the given file is readable                          |
+| `File::isWritable(string $file):bool`                                                        | Checks whether the given file is writable                          |
+| `File::realpath(string $path):string`                                                        | Returns the absolute real path to the given file or directory      |
+| `File::delete(string $file):bool`                                                            | Deletes a file                                                     |
+| `File::load(string $file, int $offset = 0, int\|null $length = null):string`                 | reads the given file into a string                                 |
+| `File::save(string $file, string $data):int`                                                 | saves the given data string to the given file path                 |
+| `File::loadJSON(string $file, bool $associative = false, int $flags = 0):mixed`              | load a JSON string from file into an array or object (convenience) |
+| `File::saveJSON(string $file, mixed $data, int $flags = Str::JSON_ENCODE_FLAGS_DEFAULT):int` | save to a JSON file (convenience)                                  |
+
+
+### `Str`
+
+(see `Arr`)
+
+| method                                                                                    | description                                                                                   |
+|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| `Str::filter(array $mixed):array`                                                         | Filters an array and removes all elements that are not strings. Array keys are *not* retained |
+| `Str::toUpper(array $strings):array`                                                      | Converts the strings in an array to uppercase                                                 |
+| `Str::toLower(array $strings):array`                                                      | Converts the strings in an array to lowercase                                                 |
+| `Str::startsWith(string $haystack, array $needles, bool $ignoreCase = false):bool`        | Checks whether the given string starts with *any* of the given array of needles               |
+| `Str::containsAll(string $haystack, array $needles, bool $ignoreCase = false):bool`       | Checks whether the given string (haystack) contains *all* of the given array of needles       |
+| `Str::containsAny(string $haystack, array $needles, bool $ignoreCase = false):bool`       | Checks whether the given string (haystack) contains *any* of the given array of needles       |
+| `Str::jsonDecode(string $json, bool $associative = false, int $flags = 0):mixed`          | Decodes a JSON string                                                                         |
+| `Str::jsonEncode(mixed $data, int $flags = self::JSON_ENCODE_FLAGS_DEFAULT):string`       | Encodes a value into a JSON representation                                                    |
+| `Str::base64encode(string $string, int $variant = SODIUM_BASE64_VARIANT_ORIGINAL):string` | Encodes a binary string to base64 (timing-safe)                                               |
+| `Str::base64decode(string $base64, int $variant = SODIUM_BASE64_VARIANT_ORIGINAL):string` | Decodes a base64 string into binary (timing-safe)                                             |
+
+
 ## Disclaimer
 
 Use at your own risk!
