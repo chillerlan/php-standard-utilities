@@ -24,7 +24,7 @@ use const DIRECTORY_SEPARATOR;
 
 #[CoversClass(Directory::class)]
 #[CoversClass(File::class)]
-class DirAndFileTest extends TestCase{
+final class DirAndFileTest extends TestCase{
 
 	protected const testDir     = __DIR__.'/filetest';
 	protected const testFile    = self::testDir.'/test.txt';
@@ -55,7 +55,7 @@ class DirAndFileTest extends TestCase{
 	#[Test]
 	public function loadInvalidFileException():void{
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage('invalid file path');
+		$this->expectExceptionMessage('invalid path');
 
 		File::load(self::invalidFile);
 	}
@@ -69,7 +69,7 @@ class DirAndFileTest extends TestCase{
 	#[Test]
 	public function deleteInvalidFileException():void{
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage('invalid file path');
+		$this->expectExceptionMessage('invalid path');
 
 		File::delete(self::invalidFile);
 	}

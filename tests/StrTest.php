@@ -18,7 +18,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Str::class)]
-class StrTest extends TestCase{
+final class StrTest extends TestCase{
 
 	/**
 	 * @return array<string, array{0: array<int, string>, 1: bool, 2: bool}>

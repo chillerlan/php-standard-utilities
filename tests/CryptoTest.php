@@ -18,7 +18,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Crypto::class)]
-class CryptoTest extends TestCase{
+final class CryptoTest extends TestCase{
 
 	// https://www.php.net/manual/en/function.hash.php
 	protected const hashdata = 'The quick brown fox jumped over the lazy dog.';
