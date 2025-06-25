@@ -7,7 +7,7 @@
  * @copyright    2025 smiley
  * @license      MIT
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace chillerlan\UtilitiesTest;
 
