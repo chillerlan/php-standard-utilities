@@ -1,5 +1,6 @@
 parameters:
 	ignoreErrors:
 		- message: "#^Call to method getBytesFromString\\(\\) on an unknown class Random\\\\Randomizer\\.$#"
+		- message: "#^Call to method pickArrayKeys\\(\\) on an unknown class Random\\\\Randomizer\\.$#"
 		- message: "#^Instantiated class Random\\\\Engine\\\\Secure not found\\.$#"
 		- message: "#^Instantiated class Random\\\\Randomizer not found\\.$#"
