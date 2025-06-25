@@ -19,8 +19,10 @@ use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
 use function is_file;
+use function is_link;
 use function is_readable;
 use function is_writable;
+use function readlink;
 use function realpath;
 use function unlink;
 
@@ -62,10 +64,15 @@ final class File{
 	 * @codeCoverageIgnore
 	 */
 	public static function realpath(string $path):string{
+
+		if(is_link($path)){
+			$path = readlink($path);
+		}
+
 		$realpath = realpath($path);
 
 		if($realpath === false){
-			throw new InvalidArgumentException('invalid file path');
+			throw new InvalidArgumentException('invalid path');
 		}
 
 		return $realpath;
