@@ -67,6 +67,10 @@ final class File{
 
 		if(is_link($path)){
 			$path = readlink($path);
+
+			if($path === false){
+				throw new InvalidArgumentException('invalid link');
+			}
 		}
 
 		$realpath = realpath($path);
