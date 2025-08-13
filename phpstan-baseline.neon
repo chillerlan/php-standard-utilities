@@ -1,26 +1,31 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$min \\(0\\) of function random_int expects lower number than parameter \\#2 \\$max \\(int\\<\\-1, max\\>\\)\\.$#"
+			message: '#^Parameter \#1 \$min \(0\) of function random_int expects lower number than parameter \#2 \$max \(int\<\-1, max\>\)\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Crypto.php
 
 		-
-			message: "#^Parameter \\$length of function file_get_contents expects int\\<0, max\\>\\|null, int\\|null given\\.$#"
+			message: '#^Parameter \$length of function file_get_contents expects int\<0, max\>\|null, int\|null given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/File.php
 
 		-
-			message: "#^Method chillerlan\\\\UtilitiesTest\\\\StrTest\\:\\:containsAllProvider\\(\\) should return array\\<string, array\\{array\\<int, string\\>, bool, bool\\}\\> but returns array\\{empty\\: array\\{array\\{\\}, false, true\\}, filtered\\: array\\{array\\{1, array\\{\\}, true\\}, false, true\\}, default\\: array\\{array\\{'world', 'Hello'\\}, false, true\\}, case mismatch\\: array\\{array\\{'World', 'hello'\\}, false, false\\}, ignore case\\: array\\{array\\{'World', 'hello'\\}, true, true\\}\\}\\.$#"
+			message: '#^Method chillerlan\\UtilitiesTest\\StrTest\:\:containsAllProvider\(\) should return array\<string, array\{array\<int, string\>, bool, bool\}\> but returns array\{empty\: array\{array\{\}, false, true\}, filtered\: array\{array\{1, array\{\}, true\}, false, true\}, default\: array\{array\{''world'', ''Hello''\}, false, true\}, ''case mismatch''\: array\{array\{''World'', ''hello''\}, false, false\}, ''ignore case''\: array\{array\{''World'', ''hello''\}, true, true\}\}\.$#'
+			identifier: return.type
 			count: 1
 			path: tests/StrTest.php
 
 		-
-			message: "#^Method chillerlan\\\\UtilitiesTest\\\\StrTest\\:\\:containsAnyProvider\\(\\) should return array\\<string, array\\{array\\<int, string\\>, bool, bool\\}\\> but returns array\\{empty\\: array\\{array\\{\\}, false, true\\}, filtered\\: array\\{array\\{1, array\\{\\}, true\\}, false, true\\}, default\\: array\\{array\\{'nope', 'Hello'\\}, false, true\\}, case mismatch\\: array\\{array\\{'nope', 'hello'\\}, false, false\\}, ignore case\\: array\\{array\\{'nope', 'hello'\\}, true, true\\}\\}\\.$#"
+			message: '#^Method chillerlan\\UtilitiesTest\\StrTest\:\:containsAnyProvider\(\) should return array\<string, array\{array\<int, string\>, bool, bool\}\> but returns array\{empty\: array\{array\{\}, false, true\}, filtered\: array\{array\{1, array\{\}, true\}, false, true\}, default\: array\{array\{''nope'', ''Hello''\}, false, true\}, ''case mismatch''\: array\{array\{''nope'', ''hello''\}, false, false\}, ''ignore case''\: array\{array\{''nope'', ''hello''\}, true, true\}\}\.$#'
+			identifier: return.type
 			count: 1
 			path: tests/StrTest.php
 
 		-
-			message: "#^Method chillerlan\\\\UtilitiesTest\\\\StrTest\\:\\:startsWithProvider\\(\\) should return array\\<string, array\\{array\\<int, string\\>, bool, bool\\}\\> but returns array\\{empty\\: array\\{array\\{\\}, false, true\\}, filtered\\: array\\{array\\{1, array\\{\\}, true\\}, false, true\\}, default\\: array\\{array\\{'nope', 'Hello'\\}, false, true\\}, case mismatch\\: array\\{array\\{'nope', 'hello'\\}, false, false\\}, ignore case\\: array\\{array\\{'nope', 'hello'\\}, true, true\\}\\}\\.$#"
+			message: '#^Method chillerlan\\UtilitiesTest\\StrTest\:\:startsWithProvider\(\) should return array\<string, array\{array\<int, string\>, bool, bool\}\> but returns array\{empty\: array\{array\{\}, false, true\}, filtered\: array\{array\{1, array\{\}, true\}, false, true\}, default\: array\{array\{''nope'', ''Hello''\}, false, true\}, ''case mismatch''\: array\{array\{''nope'', ''hello''\}, false, false\}, ''ignore case''\: array\{array\{''nope'', ''hello''\}, true, true\}\}\.$#'
+			identifier: return.type
 			count: 1
 			path: tests/StrTest.php
