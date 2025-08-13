@@ -209,8 +209,12 @@ final class Str{
 	 * @throws \SodiumException
 	 * @codeCoverageIgnore
 	 */
-	public static function base64decode(string $base64, int $variant = SODIUM_BASE64_VARIANT_ORIGINAL):string{
-		return sodium_base642bin($base64, $variant);
+	public static function base64decode(
+		string $base64,
+		int    $variant = SODIUM_BASE64_VARIANT_ORIGINAL,
+		string $ignore = '',
+	):string{
+		return sodium_base642bin($base64, $variant, $ignore);
 	}
 
 }

@@ -109,18 +109,18 @@ output and input `$format` for the functions `Crypto::encrypt()` and `Crypto::de
 
 (see `Arr`)
 
-| method                                                                                    | description                                                                                   |
-|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| `Str::filter(array $mixed):array`                                                         | Filters an array and removes all elements that are not strings. Array keys are *not* retained |
-| `Str::toUpper(array $strings):array`                                                      | Converts the strings in an array to uppercase                                                 |
-| `Str::toLower(array $strings):array`                                                      | Converts the strings in an array to lowercase                                                 |
-| `Str::startsWith(string $haystack, array $needles, bool $ignoreCase = false):bool`        | Checks whether the given string starts with *any* of the given array of needles               |
-| `Str::containsAll(string $haystack, array $needles, bool $ignoreCase = false):bool`       | Checks whether the given string (haystack) contains *all* of the given array of needles       |
-| `Str::containsAny(string $haystack, array $needles, bool $ignoreCase = false):bool`       | Checks whether the given string (haystack) contains *any* of the given array of needles       |
-| `Str::jsonDecode(string $json, bool $associative = false, int $flags = 0):mixed`          | Decodes a JSON string                                                                         |
-| `Str::jsonEncode(mixed $data, int $flags = self::JSON_ENCODE_FLAGS_DEFAULT):string`       | Encodes a value into a JSON representation                                                    |
-| `Str::base64encode(string $string, int $variant = SODIUM_BASE64_VARIANT_ORIGINAL):string` | Encodes a binary string to base64 (timing-safe)                                               |
-| `Str::base64decode(string $base64, int $variant = SODIUM_BASE64_VARIANT_ORIGINAL):string` | Decodes a base64 string into binary (timing-safe)                                             |
+| method                                                                                                         | description                                                                                   |
+|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| `Str::filter(array $mixed):array`                                                                              | Filters an array and removes all elements that are not strings. Array keys are *not* retained |
+| `Str::toUpper(array $strings):array`                                                                           | Converts the strings in an array to uppercase                                                 |
+| `Str::toLower(array $strings):array`                                                                           | Converts the strings in an array to lowercase                                                 |
+| `Str::startsWith(string $haystack, array $needles, bool $ignoreCase = false):bool`                             | Checks whether the given string starts with *any* of the given array of needles               |
+| `Str::containsAll(string $haystack, array $needles, bool $ignoreCase = false):bool`                            | Checks whether the given string (haystack) contains *all* of the given array of needles       |
+| `Str::containsAny(string $haystack, array $needles, bool $ignoreCase = false):bool`                            | Checks whether the given string (haystack) contains *any* of the given array of needles       |
+| `Str::jsonDecode(string $json, bool $associative = false, int $flags = 0):mixed`                               | Decodes a JSON string                                                                         |
+| `Str::jsonEncode(mixed $data, int $flags = self::JSON_ENCODE_FLAGS_DEFAULT):string`                            | Encodes a value into a JSON representation                                                    |
+| `Str::base64encode(string $string, int $variant = SODIUM_BASE64_VARIANT_ORIGINAL):string`                      | Encodes a binary string to base64 (timing-safe)                                               |
+| `Str::base64decode(string $base64, int $variant = SODIUM_BASE64_VARIANT_ORIGINAL, string $ignore = ''):string` | Decodes a base64 string into binary (timing-safe)                                             |
 
 
 ## Disclaimer
