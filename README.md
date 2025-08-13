@@ -80,13 +80,14 @@ output and input `$format` for the functions `Crypto::encrypt()` and `Crypto::de
 
 ### `Directory`
 
-| method                                                                                    | description                                                   |
-|-------------------------------------------------------------------------------------------|---------------------------------------------------------------|
-| `Directory::exists(string $dir):bool`                                                     | Checks whether a directory exists                             |
-| `Directory::isReadable(string $dir):bool`                                                 | Checks whether the given directory is readable                |
-| `Directory::isWritable(string $dir):bool`                                                 | Checks whether the given directory is writable                |
-| `Directory::create(string $dir, int $permissions = 0o777, bool $recursive = true):string` | Creates a directory                                           |
-| `Directory::remove(string $dir):bool`                                                     | Removes a directory                                           |
+| method                                                                                                | description                                        |
+|-------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| `Directory::exists(string $dir):bool`                                                                 | Checks whether a directory exists                  |
+| `Directory::isReadable(string $dir):bool`                                                             | Checks whether the given directory is readable     |
+| `Directory::isWritable(string $dir):bool`                                                             | Checks whether the given directory is writable     |
+| `Directory::create(string $dir, int $permissions = 0o777, bool $recursive = true):string`             | Creates a directory                                |
+| `Directory::remove(string $dir):bool`                                                                 | Removes a directory                                |
+| `Directory::relativePath(string $path, string $from, string $separator = DIRECTORY_SEPARATOR):string` | Returns the relative path from the given directory |
 
 
 ### `File`

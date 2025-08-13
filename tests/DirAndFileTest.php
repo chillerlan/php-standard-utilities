@@ -112,4 +112,11 @@ final class DirAndFileTest extends TestCase{
 		Directory::remove('');
 	}
 
+	#[Test]
+	public function relativePath():void{
+		$relative = Directory::relativePath(__DIR__.'/filetest/.gitkeep', __DIR__.'/..', '/');
+
+		$this::assertSame('tests/filetest', $relative);
+	}
+
 }

@@ -14,14 +14,18 @@ namespace chillerlan\Utilities;
 use InvalidArgumentException;
 use RuntimeException;
 use function clearstatcache;
+use function dirname;
 use function file_exists;
 use function is_dir;
+use function is_file;
 use function is_readable;
 use function is_writable;
 use function mkdir;
 use function rmdir;
 use function sprintf;
+use function str_replace;
 use function trim;
+use const DIRECTORY_SEPARATOR;
 
 /**
  * Basic directory utilities
@@ -98,6 +102,24 @@ final class Directory{
 		clearstatcache();
 
 		return true;
+	}
+
+	/**
+	 * Returns the relative path from the given directory (realpath)
+	 */
+	public static function relativePath(string $path, string $from, string $separator = DIRECTORY_SEPARATOR):string{
+		$path = File::realpath($path);
+		$from = File::realpath($from);
+
+		if(is_file($path)){
+			$path = dirname($path);
+		}
+
+		if(is_file($from)){
+			$from = dirname($from);
+		}
+
+		return trim(str_replace([$from, '\\', '/'], ['', $separator, $separator], $path), '\\/');
 	}
 
 }
