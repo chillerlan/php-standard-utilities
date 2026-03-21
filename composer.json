@@ -36,6 +36,7 @@
 		"ext-sodium": "*"
 	},
 	"require-dev": {
+		"phan/phan": "^6.0.2",
 		"phpmd/phpmd": "^2.15",
 		"phpstan/phpstan": "^2.1.42",
 		"phpstan/phpstan-deprecation-rules": "^2.0",
@@ -56,7 +57,9 @@
 		}
 	},
 	"scripts": {
-		"phpcs": "@php vendor/bin/phpcs",
+		"phan": "@php vendor/bin/phan",
+		"phpcs": "@php vendor/bin/phpcs -v",
+		"phpmd": "@php vendor/bin/phpmd src text ./phpmd.xml.dist",
 		"phpstan": "@php vendor/bin/phpstan",
 		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline",
 		"phpunit": "@php vendor/bin/phpunit"

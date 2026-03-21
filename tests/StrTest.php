@@ -22,6 +22,7 @@ final class StrTest extends TestCase{
 
 	/**
 	 * @return array<string, array{0: array<int, string>, 1: bool, 2: bool}>
+	 * @phan-suppress PhanTypeMismatchReturn
 	 */
 	public static function startsWithProvider():array{
 		return [
@@ -44,6 +45,7 @@ final class StrTest extends TestCase{
 
 	/**
 	 * @return array<string, array{0: array<int, string>, 1: bool, 2: bool}>
+	 * @phan-suppress PhanTypeMismatchReturn
 	 */
 	public static function containsAllProvider():array{
 		return [
@@ -66,6 +68,7 @@ final class StrTest extends TestCase{
 
 	/**
 	 * @return array<string, array{0: array<int, string>, 1: bool, 2: bool}>
+	 * @phan-suppress PhanTypeMismatchReturn
 	 */
 	public static function containsAnyProvider():array{
 		return [

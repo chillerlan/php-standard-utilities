@@ -115,6 +115,7 @@ final class File{
 			throw new RuntimeException('cannot read the given file'); // @codeCoverageIgnore
 		}
 
+		/** @phan-suppress-next-line PhanTypeMismatchArgumentNullableInternal (false positive) */
 		$content = file_get_contents(filename: $file, offset: $offset, length: $length);
 
 		if($content === false){

@@ -38,6 +38,7 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
+          - "8.5"
 
     steps:
       - name: "Checkout"
@@ -47,12 +48,12 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions: ast, ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
 
       - name: "Validate composer.json"
-        run: composer validate --ansi --strict
+        run: composer validate --no-interaction --ansi --verbose --with-dependencies
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
@@ -60,8 +61,11 @@ jobs:
       - name: "Run PHPCodeSniffer"
         run: php vendor/bin/phpcs
 
-      - name: "Run PHPStan"
-        run: php vendor/bin/phpstan
+      - name: "Run phan"
+        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
+
+#      - name: "Run PHPStan"
+#        run: php vendor/bin/phpstan
 
 
   tests:
@@ -80,6 +84,7 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
+          - "8.5"
 
     steps:
       - name: "Checkout"

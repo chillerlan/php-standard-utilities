@@ -80,6 +80,7 @@ final class Arr{
 		}
 
 		if(PHP_VERSION_ID >= 80200){
+			/** @phan-suppress-next-line PhanParamTooManyInternal (false positive) */
 			$key = (new \Random\Randomizer(new \Random\Engine\Secure))->pickArrayKeys($array, 1)[0];
 		}
 		else{
