@@ -14,11 +14,11 @@ A collection of reusable multi-purpose functions for PHP libraries.
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-standard-utilities.svg?logo=packagist&logoColor=fff
 [packagist]: https://packagist.org/packages/chillerlan/php-standard-utilities
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-standard-utilities
-[license]: https://github.com/chillerlan/php-standard-utilities/blob/main/LICENSE
-[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-standard-utilities/ci.yml?branch=main&logo=github&logoColor=fff
-[gh-action]: https://github.com/chillerlan/php-standard-utilities/actions/workflows/ci.yml?query=branch%3Amain
-[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-standard-utilities.svg?logo=codecov&logoColor=fff
-[coverage]: https://codecov.io/github/chillerlan/php-standard-utilities
+[license]: https://github.com/chillerlan/php-standard-utilities/blob/v1.x/LICENSE
+[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-standard-utilities/ci.yml?branch=v1.x&logo=github&logoColor=fff
+[gh-action]: https://github.com/chillerlan/php-standard-utilities/actions/workflows/ci.yml?query=branch%3Av1.x
+[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-standard-utilities/v1.x?logo=codecov&logoColor=fff
+[coverage]: https://codecov.io/github/chillerlan/php-standard-utilities/tree/v1.x
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-standard-utilities.svg?logo=packagist&logoColor=fff
 [downloads]: https://packagist.org/packages/chillerlan/php-standard-utilities/stats
 
