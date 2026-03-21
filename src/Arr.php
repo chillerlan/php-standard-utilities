@@ -37,6 +37,7 @@ final class Arr{
 		}
 
 		if(PHP_VERSION_ID >= 80500){
+			/** @phan-suppress-next-line PhanUndeclaredFunction */
 			return \array_first($array);
 		}
 
@@ -57,6 +58,7 @@ final class Arr{
 		}
 
 		if(PHP_VERSION_ID >= 80500){
+			/** @phan-suppress-next-line PhanUndeclaredFunction */
 			return \array_last($array);
 		}
 
