@@ -76,7 +76,7 @@ final class Crypto{
 		// use the Randomizer if available
 		// https://github.com/phpstan/phpstan/issues/7843
 		if(PHP_VERSION_ID >= 80300){
-			/** @phan-suppress-next-line PhanUndeclaredClassMethod */
+			/** @phan-suppress-next-line PhanUndeclaredClassMethod, PhanUndeclaredMethod */
 			return (new \Random\Randomizer(new \Random\Engine\Secure))->getBytesFromString($keyspace, $length);
 		}
 
