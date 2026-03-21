@@ -12,6 +12,6 @@ parameters:
 
 includes:
 	- phpstan-baseline.neon
-	- .phpstan/ignore-by-php-version.php
+#	- .phpstan/ignore-by-php-version.php
 	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
 	- vendor/phpstan/phpstan-deprecation-rules/rules.neon

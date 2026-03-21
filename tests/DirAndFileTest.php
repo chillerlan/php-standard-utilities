@@ -26,12 +26,12 @@ use const DIRECTORY_SEPARATOR;
 #[CoversClass(File::class)]
 final class DirAndFileTest extends TestCase{
 
-	protected const testDir     = __DIR__.'/filetest';
-	protected const testFile    = self::testDir.'/test.txt';
-	protected const testData    = 'Hello world!';
-	protected const testNewDir  = self::testDir.DIRECTORY_SEPARATOR.'some dir';
-	protected const invalidDir  = DIRECTORY_SEPARATOR.'foo'.DIRECTORY_SEPARATOR.'bar';
-	protected const invalidFile = self::invalidDir.DIRECTORY_SEPARATOR.'whatever.txt';
+	protected const string testDir     = __DIR__.'/filetest';
+	protected const string testFile    = self::testDir.'/test.txt';
+	protected const string testData    = 'Hello world!';
+	protected const string testNewDir  = self::testDir.DIRECTORY_SEPARATOR.'some dir';
+	protected const string invalidDir  = DIRECTORY_SEPARATOR.'foo'.DIRECTORY_SEPARATOR.'bar';
+	protected const string invalidFile = self::invalidDir.DIRECTORY_SEPARATOR.'whatever.txt';
 
 	#[Test]
 	public function saveFile():void{

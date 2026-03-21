@@ -30,18 +30,19 @@
 	"minimum-stability": "stable",
 	"prefer-stable": true,
 	"require": {
-		"php": "^8.1",
+		"php": "^8.4",
 		"ext-json": "*",
 		"ext-mbstring": "*",
 		"ext-sodium": "*"
 	},
 	"require-dev": {
+		"phan/phan": "^6.0.2",
 		"phpmd/phpmd": "^2.15",
-		"phpstan/phpstan": "^2.1.17",
+		"phpstan/phpstan": "^2.1.42",
 		"phpstan/phpstan-deprecation-rules": "^2.0",
-		"phpunit/phpunit": "^10.5",
-		"slevomat/coding-standard": "^8.19",
-		"squizlabs/php_codesniffer": "^3.13"
+		"phpunit/phpunit": "^13.0",
+		"slevomat/coding-standard": "^8.28",
+		"squizlabs/php_codesniffer": "^4"
 	},
 	"suggest": {
 	},
@@ -56,7 +57,9 @@
 		}
 	},
 	"scripts": {
-		"phpcs": "@php vendor/bin/phpcs",
+		"phan": "@php vendor/bin/phan",
+		"phpcs": "@php vendor/bin/phpcs -v",
+		"phpmd": "@php vendor/bin/phpmd src text ./phpmd.xml.dist",
 		"phpstan": "@php vendor/bin/phpstan",
 		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline",
 		"phpunit": "@php vendor/bin/phpunit"

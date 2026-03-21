@@ -11,11 +11,10 @@ declare(strict_types=1);
 
 namespace chillerlan\Utilities;
 
+use Random\Engine\Secure;
+use Random\Randomizer;
 use function array_key_first;
 use function array_key_last;
-use function array_keys;
-use function count;
-use function random_int;
 use const PHP_VERSION_ID;
 
 /**
@@ -36,6 +35,10 @@ final class Arr{
 			return null;
 		}
 
+		if(PHP_VERSION_ID >= 80500){
+			return \array_first($array);
+		}
+
 		return $array[array_key_first($array)];
 	}
 
@@ -52,18 +55,19 @@ final class Arr{
 			return null;
 		}
 
+		if(PHP_VERSION_ID >= 80500){
+			return \array_last($array);
+		}
+
 		return $array[array_key_last($array)];
 	}
 
 	/**
 	 * Returns a random element of the given array, `null` if the given array is empty.
 	 *
-	 * @see \random_int() - PHP <= 8.1
-	 * @see \Random\Randomizer::pickArrayKeys() - PHP >= 8.2
+	 * @see \Random\Randomizer::pickArrayKeys()
 	 *
 	 * @param array<string|int, mixed> $array
-	 *
-	 * @noinspection PhpFullyQualifiedNameUsageInspection
 	 */
 	public static function random(array $array):mixed{
 
@@ -71,14 +75,8 @@ final class Arr{
 			return null;
 		}
 
-		if(PHP_VERSION_ID >= 80200){
-			$key = (new \Random\Randomizer(new \Random\Engine\Secure))->pickArrayKeys($array, 1)[0];
-		}
-		else{
-			// array_rand() is not cryptographically secure
-			$keys = array_keys($array);
-			$key  = $keys[random_int(0, (count($keys) - 1))];
-		}
+		/** @phan-suppress-next-line PhanParamTooManyInternal (false positive) */
+		$key = new Randomizer(new Secure)->pickArrayKeys($array, 1)[0];
 
 		return $array[$key];
 	}

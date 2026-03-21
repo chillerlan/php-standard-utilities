@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Arr::class)]
 final class ArrTest extends TestCase{
 
-	private const testArray = [
+	private const array testArray = [
 		'one'   => 1,
 		'two'   => 2,
 		'three' => 3,

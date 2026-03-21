@@ -34,7 +34,7 @@ use const SODIUM_BASE64_VARIANT_ORIGINAL;
  */
 final class Str{
 
-	public const JSON_ENCODE_FLAGS_DEFAULT = (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+	public const int JSON_ENCODE_FLAGS_DEFAULT = (JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
 	/**
 	 * Filters an array and removes all elements that are not strings. Array keys are *not* retained.

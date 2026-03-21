@@ -21,22 +21,22 @@ use PHPUnit\Framework\TestCase;
 final class CryptoTest extends TestCase{
 
 	// https://www.php.net/manual/en/function.hash.php
-	protected const hashdata = 'The quick brown fox jumped over the lazy dog.';
+	protected const string hashdata = 'The quick brown fox jumped over the lazy dog.';
 
 	#[Test]
 	public function sha256():void{
 		$this::assertSame(
-			Crypto::sha256($this::hashdata),
 			'68b1282b91de2c054c36629cb8dd447f12f096d3e3c587978dc2248444633483',
+			Crypto::sha256($this::hashdata),
 		);
 	}
 
 	#[Test]
 	public function sha512():void{
 		$this::assertSame(
-			Crypto::sha512($this::hashdata),
 			'0a8c150176c2ba391d7f1670ef4955cd99d3c3ec8cf06198cec30d436f2ac0c9'.
 			'b64229b5a54bdbd5563160503ce992a74be528761da9d0c48b7c74627302eb25',
+			Crypto::sha512($this::hashdata),
 		);
 	}
 

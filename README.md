@@ -31,7 +31,7 @@ This library features some common functions to reduce overall duplication and av
 
 ### Requirements
 
-- PHP 8.1+
+- PHP 8.4+
 	- extensions: `json`, `mbstring`, `sodium`
 
 ## API

@@ -12,19 +12,18 @@ declare(strict_types=1);
 namespace chillerlan\Utilities;
 
 use InvalidArgumentException;
+use Random\Engine\Secure;
+use Random\Randomizer;
 use RuntimeException;
 use function hash;
 use function random_bytes;
-use function random_int;
 use function sodium_bin2hex;
 use function sodium_crypto_secretbox;
 use function sodium_crypto_secretbox_keygen;
 use function sodium_crypto_secretbox_open;
 use function sodium_hex2bin;
 use function sodium_memzero;
-use function strlen;
 use function substr;
-use const PHP_VERSION_ID;
 use const SODIUM_CRYPTO_SECRETBOX_NONCEBYTES;
 
 /**
@@ -32,18 +31,18 @@ use const SODIUM_CRYPTO_SECRETBOX_NONCEBYTES;
  */
 final class Crypto{
 
-	public const ENCRYPT_FORMAT_BINARY = 0b00;
-	public const ENCRYPT_FORMAT_BASE64 = 0b01;
-	public const ENCRYPT_FORMAT_HEX    = 0b10;
+	public const int ENCRYPT_FORMAT_BINARY = 0b00;
+	public const int ENCRYPT_FORMAT_BASE64 = 0b01;
+	public const int ENCRYPT_FORMAT_HEX    = 0b10;
 
-	public const NUMERIC         = '0123456789';
-	public const ASCII_LOWER     = 'abcdefghijklmnopqrstuvwxyz';
-	public const ASCII_UPPER     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	public const ASCII_SYMBOL    = ' !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-	public const HEXADECIMAL     = self::NUMERIC.'abcdef';
-	public const ASCII_ALPHANUM  = self::NUMERIC.self::ASCII_LOWER.self::ASCII_UPPER;
-	public const ASCII_PRINTABLE = self::NUMERIC.self::ASCII_LOWER.self::ASCII_UPPER.self::ASCII_SYMBOL;
-	public const ASCII_COMMON_PW = self::ASCII_ALPHANUM.'!#$%&()*+,-./:;<=>?@[]~_|';
+	public const string NUMERIC         = '0123456789';
+	public const string ASCII_LOWER     = 'abcdefghijklmnopqrstuvwxyz';
+	public const string ASCII_UPPER     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	public const string ASCII_SYMBOL    = ' !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+	public const string HEXADECIMAL     = self::NUMERIC.'abcdef';
+	public const string ASCII_ALPHANUM  = self::NUMERIC.self::ASCII_LOWER.self::ASCII_UPPER;
+	public const string ASCII_PRINTABLE = self::NUMERIC.self::ASCII_LOWER.self::ASCII_UPPER.self::ASCII_SYMBOL;
+	public const string ASCII_COMMON_PW = self::ASCII_ALPHANUM.'!#$%&()*+,-./:;<=>?@[]~_|';
 
 	/**
 	 * Generates an SHA-256 hash for the given value
@@ -66,27 +65,10 @@ final class Crypto{
 	/**
 	 * Generates a secure random string of the given `$length`, using the characters (8-bit byte) in the given `$keyspace`.
 	 *
-	 * @see \random_int() - PHP <= 8.2
-	 * @see \Random\Randomizer - PHP >= 8.3
-	 *
-	 * @noinspection PhpFullyQualifiedNameUsageInspection
+	 * @see \Random\Randomizer
 	 */
 	public static function randomString(int $length, string $keyspace = self::ASCII_COMMON_PW):string{
-
-		// use the Randomizer if available
-		// https://github.com/phpstan/phpstan/issues/7843
-		if(PHP_VERSION_ID >= 80300){
-			return (new \Random\Randomizer(new \Random\Engine\Secure))->getBytesFromString($keyspace, $length);
-		}
-
-		$len = (strlen($keyspace) - 1);
-		$str = '';
-
-		for($i = 0; $i < $length; $i++){
-			$str .= $keyspace[random_int(0, $len)];
-		}
-
-		return $str;
+		return new Randomizer(new Secure)->getBytesFromString($keyspace, $length);
 	}
 
 	/**
