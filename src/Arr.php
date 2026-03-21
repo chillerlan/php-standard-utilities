@@ -36,6 +36,10 @@ final class Arr{
 			return null;
 		}
 
+		if(PHP_VERSION_ID >= 80500){
+			return \array_first($array);
+		}
+
 		return $array[array_key_first($array)];
 	}
 
@@ -52,13 +56,17 @@ final class Arr{
 			return null;
 		}
 
+		if(PHP_VERSION_ID >= 80500){
+			return \array_last($array);
+		}
+
 		return $array[array_key_last($array)];
 	}
 
 	/**
 	 * Returns a random element of the given array, `null` if the given array is empty.
 	 *
-	 * @see \random_int() - PHP <= 8.1
+	 * @see \random_int() - PHP 8.1
 	 * @see \Random\Randomizer::pickArrayKeys() - PHP >= 8.2
 	 *
 	 * @param array<string|int, mixed> $array
