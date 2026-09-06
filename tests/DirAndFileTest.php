@@ -43,7 +43,7 @@ final class DirAndFileTest extends TestCase{
 	#[Test]
 	public function saveInvalidDirectoryException():void{
 		$this->expectException(RuntimeException::class);
-		$this->expectExceptionMessage('target directory is not writable or does not extist');
+		$this->expectExceptionMessageIsOrContains('target directory is not writable or does not extist');
 
 		File::save(self::invalidFile, 'nope');
 	}
@@ -57,7 +57,7 @@ final class DirAndFileTest extends TestCase{
 	#[Test]
 	public function loadInvalidFileException():void{
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage('invalid path');
+		$this->expectExceptionMessageIsOrContains('invalid path');
 
 		File::load(self::invalidFile);
 	}
@@ -71,7 +71,7 @@ final class DirAndFileTest extends TestCase{
 	#[Test]
 	public function deleteInvalidFileException():void{
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage('invalid path');
+		$this->expectExceptionMessageIsOrContains('invalid path');
 
 		File::delete(self::invalidFile);
 	}
@@ -87,7 +87,7 @@ final class DirAndFileTest extends TestCase{
 	#[Test]
 	public function createDirectoryEmptyNameException():void{
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage('invalid directory');
+		$this->expectExceptionMessageIsOrContains('invalid directory');
 
 		Directory::create('');
 	}
@@ -95,7 +95,7 @@ final class DirAndFileTest extends TestCase{
 	#[Test]
 	public function createDirectoryExistsAsFileException():void{
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage('already exists as a file or link');
+		$this->expectExceptionMessageIsOrContains('already exists as a file or link');
 
 		Directory::create(self::testDir.'/.gitkeep');
 	}
@@ -109,7 +109,7 @@ final class DirAndFileTest extends TestCase{
 	#[Test]
 	public function removeDirectoryEmptyNameException():void{
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage('invalid directory');
+		$this->expectExceptionMessageIsOrContains('invalid directory');
 
 		Directory::remove('');
 	}
