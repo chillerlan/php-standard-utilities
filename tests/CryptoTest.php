@@ -52,9 +52,9 @@ final class CryptoTest extends TestCase{
 	#[Test]
 	public function sha512file():void{
 		$this::assertSame(
-			'a2659484c18570dfa1d478c45d163fef293eca1afb261ed513726c40d2359d53'.
-			'ddbad0bfe2599065c7abc57541e37686f77774702a82bd11360792b67d2c45e7',
-			Crypto::sha512(self::hashfile),
+			'0a8c150176c2ba391d7f1670ef4955cd99d3c3ec8cf06198cec30d436f2ac0c9'.
+			'b64229b5a54bdbd5563160503ce992a74be528761da9d0c48b7c74627302eb25',
+			Crypto::sha512file(self::hashfile),
 		);
 	}
 
