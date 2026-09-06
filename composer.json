@@ -36,13 +36,11 @@
 		"ext-sodium": "*"
 	},
 	"require-dev": {
-		"phan/phan": "^6.0.2",
+		"phan/phan": "^6.0.7",
 		"phpmd/phpmd": "^2.15",
-		"phpstan/phpstan": "^2.1.42",
-		"phpstan/phpstan-deprecation-rules": "^2.0",
-		"phpunit/phpunit": "^13.0",
-		"slevomat/coding-standard": "^8.28",
-		"squizlabs/php_codesniffer": "^4"
+		"phpunit/phpunit": "^13.3",
+		"slevomat/coding-standard": "^8.31.1",
+		"squizlabs/php_codesniffer": "^4.0"
 	},
 	"suggest": {
 	},
@@ -60,8 +58,6 @@
 		"phan": "@php vendor/bin/phan",
 		"phpcs": "@php vendor/bin/phpcs -v",
 		"phpmd": "@php vendor/bin/phpmd src text ./phpmd.xml.dist",
-		"phpstan": "@php vendor/bin/phpstan",
-		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline",
 		"phpunit": "@php vendor/bin/phpunit"
 	},
 	"config": {
