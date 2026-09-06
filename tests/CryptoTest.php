@@ -41,6 +41,23 @@ final class CryptoTest extends TestCase{
 	}
 
 	#[Test]
+	public function sha256file():void{
+		$this::assertSame(
+			'09ab6123a90ddb09c2446ff272133d6fcdac5e8cbf1b85b8745e7e2904e22f7c',
+			Crypto::sha256file(__DIR__.'/../composer.json'),
+		);
+	}
+
+	#[Test]
+	public function sha512file():void{
+		$this::assertSame(
+			'ab15f3bf8f69b5d37f6688ceeed4ed856e9c6a64f427a56f4019d8843bbaba6e'.
+			'6340a9fc33b17df476ff67d86a50757e6d8d061afd2f087a0a1505239c8005e6',
+			Crypto::sha512(__DIR__.'/../composer.json'),
+		);
+	}
+
+	#[Test]
 	public function randomString():void{
 		$this::assertMatchesRegularExpression('/^[a-f\d]{32}/i', Crypto::randomString(32, Crypto::HEXADECIMAL));
 		$this::assertMatchesRegularExpression('/^[a-z]{32}/', Crypto::randomString(32, Crypto::ASCII_LOWER));

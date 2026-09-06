@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace chillerlan\Utilities;
 
+use FilesystemIterator;
 use InvalidArgumentException;
 use RuntimeException;
 use function clearstatcache;
 use function dirname;
 use function file_exists;
+use function in_array;
 use function is_dir;
 use function is_file;
 use function is_readable;
@@ -23,6 +25,7 @@ use function is_writable;
 use function mkdir;
 use function rmdir;
 use function sprintf;
+use function str_contains;
 use function str_replace;
 use function trim;
 use const DIRECTORY_SEPARATOR;
@@ -120,6 +123,73 @@ final class Directory{
 		}
 
 		return trim(str_replace([$from, '\\', '/'], ['', $separator, $separator], $path), '\\/');
+	}
+
+	/**
+	 * Lists the files in the given directory, with the file names as array keys, ordered.
+	 * Excludes files that don't match the given extensions or part of the name, case-sensitive.
+	 *
+	 * Please note that files that start with a dot (hidden) are considered extensions.
+	 *
+	 * @see \str_contains()
+	 *
+	 * @return array<string, \SplFileInfo>
+	 * @throws \InvalidArgumentException
+	 */
+	public static function filelist(string $path, array|null $extensions = null, string|null $nameContains = null):array{
+		$path = File::realpath($path);
+
+		if(!self::isReadable($path)){
+			throw new InvalidArgumentException(sprintf('cannot read the given directory: %s', $path));
+		}
+
+		$files = [];
+		/** @var \SplFileInfo $finfo */
+		foreach(new FilesystemIterator($path, FilesystemIterator::SKIP_DOTS) as $finfo){
+			// skip directories
+			if(!$finfo->isFile()){
+				continue;
+			}
+			// skip extensions that don't match
+			if($extensions !== null && !in_array($finfo->getExtension(), $extensions, true)){
+				continue;
+			}
+			// skip names that don't match
+			if($nameContains !== null && !str_contains($finfo->getFilename(), $nameContains)){
+				continue;
+			}
+
+			$files[$finfo->getFilename()] = $finfo;
+		}
+
+		ksort($files);
+
+		return $files;
+	}
+
+	/**
+	 * Deletes files in the given directory, returns an array with the results: [filename => (bool) success/failure]
+	 *
+	 * @see \chillerlan\Utilities\Directory::filelist()
+	 *
+	 * @return string[]
+	 */
+	public static function clear(string $path, array|null $extensions = null, string|null $nameContains = null):array{
+		$currentFiles = self::filelist($path, $extensions, $nameContains);
+		$deletedFiles = [];
+
+		foreach($currentFiles as $fileName => $fileInfo){
+
+			try{
+				$deletedFiles[$fileName] = File::delete($fileInfo->getRealPath());
+			}
+			catch(RuntimeException){
+				$deletedFiles[$fileName] = false;
+			}
+
+		}
+
+		return $deletedFiles;
 	}
 
 }

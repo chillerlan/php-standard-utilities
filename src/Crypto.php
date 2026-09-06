@@ -54,12 +54,30 @@ final class Crypto{
 	}
 
 	/**
+	 * Generates an SHA-256 hash for the given file
+	 *
+	 * @see \hash_file()
+	 */
+	public static function sha256file(string $path, bool $binary = false):string{
+		return hash_file('sha256', File::realpath($path), $binary);
+	}
+
+	/**
 	 * Generates an SHA-512 hash for the given value
 	 *
 	 * @see \hash()
 	 */
 	public static function sha512(string $data, bool $binary = false):string{
 		return hash('sha512', $data, $binary);
+	}
+
+	/**
+	 * Generates an SHA-512 hash for the given file
+	 *
+	 * @see \hash_file()
+	 */
+	public static function sha512file(string $path, bool $binary = false):string{
+		return hash_file('sha512', File::realpath($path), $binary);
 	}
 
 	/**

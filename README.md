@@ -53,6 +53,8 @@ This library features some common functions to reduce overall duplication and av
 |-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `Crypto::sha256(string $data, bool $binary = false):string`                                           | Generates an SHA-256 hash for the given value                                                                                          |
 | `Crypto::sha512(string $data, bool $binary = false):string`                                           | Generates an SHA-512 hash for the given value                                                                                          |
+| `Crypto::sha256file(string $data, bool $binary = false):string`                                       | Generates an SHA-256 hash for the given file                                                                                           |
+| `Crypto::sha512file(string $data, bool $binary = false):string`                                       | Generates an SHA-512 hash for the given file                                                                                           |
 | `Crypto::randomString(int $length, string $keyspace = Crypto::ASCII_COMMON_PW):string`                | Generates a secure random string of the given `$length`, using the characters (8-bit byte) in the given `$keyspace`.                   |
 | `Crypto::createEncryptionKey():string`                                                                | Creates a new cryptographically secure random encryption key for use with `encrypt()` and `decrypt()` (returned in hexadecimal format) |
 | `Crypto::encrypt(string $data, string $keyHex, int $format = Crypto::ENCRYPT_FORMAT_HEX):string`      | Encrypts the given `$data` with `$key`, formats the output according to `$format` \[binary, base64, hex\]                              |
@@ -80,14 +82,16 @@ output and input `$format` for the functions `Crypto::encrypt()` and `Crypto::de
 
 ### `Directory`
 
-| method                                                                                                | description                                        |
-|-------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| `Directory::exists(string $dir):bool`                                                                 | Checks whether a directory exists                  |
-| `Directory::isReadable(string $dir):bool`                                                             | Checks whether the given directory is readable     |
-| `Directory::isWritable(string $dir):bool`                                                             | Checks whether the given directory is writable     |
-| `Directory::create(string $dir, int $permissions = 0o777, bool $recursive = true):string`             | Creates a directory                                |
-| `Directory::remove(string $dir):bool`                                                                 | Removes a directory                                |
-| `Directory::relativePath(string $path, string $from, string $separator = DIRECTORY_SEPARATOR):string` | Returns the relative path from the given directory |
+| method                                                                                                        | description                                                                         |
+|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| `Directory::exists(string $dir):bool`                                                                         | Checks whether a directory exists                                                   |
+| `Directory::isReadable(string $dir):bool`                                                                     | Checks whether the given directory is readable                                      |
+| `Directory::isWritable(string $dir):bool`                                                                     | Checks whether the given directory is writable                                      |
+| `Directory::create(string $dir, int $permissions = 0o777, bool $recursive = true):string`                     | Creates a directory                                                                 |
+| `Directory::remove(string $dir):bool`                                                                         | Removes a directory                                                                 |
+| `Directory::relativePath(string $path, string $from, string $separator = DIRECTORY_SEPARATOR):string`         | Returns the relative path from the given directory                                  |
+| `Directory::filelist(string $path, array\| null $extensions = null, string\|null $nameContains = null):array` | Lists the files in the given directory, with the file names as array keys, ordered. |
+| `Directory::clear(string $path, array\| null $extensions = null, string\|null $nameContains = null):array`    | Deletes files in the given directory                                                |
 
 
 ### `File`

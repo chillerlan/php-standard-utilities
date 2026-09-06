@@ -19,7 +19,9 @@ use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
+use function array_keys;
 use function realpath;
+use function sprintf;
 use const DIRECTORY_SEPARATOR;
 
 #[CoversClass(Directory::class)]
@@ -117,6 +119,36 @@ final class DirAndFileTest extends TestCase{
 		$relative = Directory::relativePath(__DIR__.'/filetest/.gitkeep', __DIR__.'/..', '/');
 
 		$this::assertSame('tests/filetest', $relative);
+	}
+
+	#[Test]
+	public function filelist():void{
+		$dir = __DIR__.'/..';
+		// filter by extension
+		$list = Directory::filelist($dir, ['dist']);
+		$this::assertSame(['phpcs.xml.dist', 'phpmd.xml.dist', 'phpunit.xml.dist'], array_keys($list));
+		// no extension
+		$list = Directory::filelist($dir, ['']);
+		$this::assertSame(['LICENSE'], array_keys($list));
+		// files starting with a dot are extensions
+		$list = Directory::filelist($dir, ['gitignore']);
+		$this::assertSame(['.gitignore'], array_keys($list));
+		// filter by part of name
+		$list = Directory::filelist($dir, null, 'git');
+		$this::assertSame(['.gitattributes', '.gitignore'], array_keys($list));
+	}
+
+	#[Test]
+	public function clear():void{
+
+		for($i = 0; $i < 3; $i++){
+			File::save(sprintf('%s/file%s.txt', self::testDir, $i), 'testfile');
+		}
+
+		$deleted = Directory::clear(self::testDir, ['txt']);
+
+		$this::assertSame($deleted, ['file0.txt' => true, 'file1.txt' => true, 'file2.txt' => true]);
+		$this::assertSame(['.gitkeep'], array_keys(Directory::filelist(self::testDir)));
 	}
 
 }
