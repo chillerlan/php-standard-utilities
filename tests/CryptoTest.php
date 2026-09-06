@@ -22,6 +22,7 @@ final class CryptoTest extends TestCase{
 
 	// https://www.php.net/manual/en/function.hash.php
 	protected const string hashdata = 'The quick brown fox jumped over the lazy dog.';
+	protected const string hashfile = __DIR__.'/filetest/hash.test';
 
 	#[Test]
 	public function sha256():void{
@@ -43,17 +44,17 @@ final class CryptoTest extends TestCase{
 	#[Test]
 	public function sha256file():void{
 		$this::assertSame(
-			'09ab6123a90ddb09c2446ff272133d6fcdac5e8cbf1b85b8745e7e2904e22f7c',
-			Crypto::sha256file(__DIR__.'/../composer.json'),
+			'68b1282b91de2c054c36629cb8dd447f12f096d3e3c587978dc2248444633483',
+			Crypto::sha256file(self::hashfile),
 		);
 	}
 
 	#[Test]
 	public function sha512file():void{
 		$this::assertSame(
-			'ab15f3bf8f69b5d37f6688ceeed4ed856e9c6a64f427a56f4019d8843bbaba6e'.
-			'6340a9fc33b17df476ff67d86a50757e6d8d061afd2f087a0a1505239c8005e6',
-			Crypto::sha512(__DIR__.'/../composer.json'),
+			'a2659484c18570dfa1d478c45d163fef293eca1afb261ed513726c40d2359d53'.
+			'ddbad0bfe2599065c7abc57541e37686f77774702a82bd11360792b67d2c45e7',
+			Crypto::sha512(self::hashfile),
 		);
 	}
 

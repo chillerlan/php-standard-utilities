@@ -148,7 +148,7 @@ final class DirAndFileTest extends TestCase{
 		$deleted = Directory::clear(self::testDir, ['txt']);
 
 		$this::assertSame($deleted, ['file0.txt' => true, 'file1.txt' => true, 'file2.txt' => true]);
-		$this::assertSame(['.gitkeep'], array_keys(Directory::filelist(self::testDir)));
+		$this::assertSame(['.gitkeep', 'hash.test'], array_keys(Directory::filelist(self::testDir)));
 	}
 
 }
